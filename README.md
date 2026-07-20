@@ -3,7 +3,7 @@
 YOLOv11 drone detector fine-tuned on the drone-vs-bird dataset, with
 real-world detection range testing using the RGB camera of an OAK-D LR
 (OpenCV AI Kit - Depth, Long Range) camera and synchronized drone GPS
-telemetry. Note: only the RGB camera stream was used for this project —
+telemetry. Note: only the RGB camera stream was used for this project 
 the depth sensing capability of the OAK-D LR was not utilized.
 
 ## Overview
