@@ -21,17 +21,7 @@ includes only training/inference code and resulting model weights.
 
 ## Demo — Real-Time Drone Detection
 
-
 https://github.com/user-attachments/assets/b8e243fd-2b6a-4bad-a79f-4ea09f861f92
-
-
-
-
-
-
-
-
-
 
 ## Pipeline
 
@@ -44,16 +34,30 @@ https://github.com/user-attachments/assets/b8e243fd-2b6a-4bad-a79f-4ea09f861f92
    GPS logs and correlates it with detection success/confidence to
    characterize practical detection range.
 
-## Range Testing Methodology
+## GPS Telemetry & Range Measurement
 
-Raw GPS coordinates are not published to avoid revealing the exact test
-location. Instead, this repo reports **derived distance and detection
-performance**:
+The OAK-D LR camera captures video frames while simultaneously receiving
+drone telemetry — including live GPS position — over its link to the
+drone. This telemetry is streamed in real time to a base station laptop,
+where each video frame is timestamp-matched with the corresponding drone
+GPS coordinate and the camera's own fixed GPS position.
 
-- Camera-to-drone distance computed per frame via the haversine formula.
-- Detection success/confidence logged alongside distance and altitude.
-- Results summarized as detection rate vs. distance, showing the
-  practical maximum reliable detection range.
+For every frame, three values are logged:
+- Camera GPS position (fixed, ground station)
+- Drone GPS position (live telemetry)
+- Straight-line distance between the two, computed via the haversine formula
+
+This per-frame distance was then correlated with YOLO detection results
+(success/failure, confidence) to determine the effective detection range
+of the camera + model combination.
+
+**Result**: Based on this camera-to-drone distance analysis, the system
+reliably detected the drone up to approximately **80 meters**, under
+clear daylight conditions.
+
+Exact GPS coordinates are not published to avoid revealing the test
+location; only derived distance measurements and detection outcomes are
+reported here.
 
 ## Setup
 
@@ -75,8 +79,8 @@ python inference.py --weights runs/detect/drone_finetuned/weights/best.pt --sour
 
 - mAP50 ~0.79 overall (drone class mAP50 ~0.92)
 - Real-world OAK-D LR range test: reliable detection up to approximately
-  **[fill in your tested max range, e.g. 850m]** under **[conditions:
-  daylight, clear sky, etc.]**
+  **80 meters**, under clear daylight conditions, based on GPS-derived
+  camera-to-drone distance.
 
 ## Acknowledgments
 
