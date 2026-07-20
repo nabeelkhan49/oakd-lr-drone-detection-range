@@ -19,6 +19,20 @@ Depth, Long Range) camera and synchronized drone GPS telemetry.
 Check the dataset's license before redistributing raw data; this repo
 includes only training/inference code and resulting model weights.
 
+## Demo — Real-Time Drone Detection
+
+
+https://github.com/user-attachments/assets/b8e243fd-2b6a-4bad-a79f-4ea09f861f92
+
+
+
+
+
+
+
+
+
+
 ## Pipeline
 
 1. `finetune_drone_vs_bird.py` — downloads the drone-vs-bird dataset and
