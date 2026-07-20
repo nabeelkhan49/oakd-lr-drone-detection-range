@@ -21,7 +21,10 @@ includes only training/inference code and resulting model weights.
 
 ## Demo — Real-Time Drone Detection
 
-https://github.com/user-attachments/assets/b8e243fd-2b6a-4bad-a79f-4ea09f861f92
+
+https://github.com/user-attachments/assets/7f5d0847-7632-4199-9cc2-bb1cc726d1f4
+
+
 
 ## Pipeline
 
